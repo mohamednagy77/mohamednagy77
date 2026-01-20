@@ -73,6 +73,9 @@
 <p>
   <img src="https://skillicons.dev/icons?i=git,github,githubactions,docker,postman,linux,vscode,visualstudio" />
 </p>
+<p align="center">
+  <img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif" width="300"/>
+</p>
 
 ---
 
