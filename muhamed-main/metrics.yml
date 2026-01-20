@@ -1,31 +1,28 @@
-name: Metrics
+name: Generate Snake
+
 on:
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  github-metrics:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: lowlighter/metrics@latest
+      - uses: actions/checkout@v3
+
+      - name: Generate Snake Animation
+        uses: Platane/snk@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          user: muhamedessamz
-          filename: github-metrics.svg
-          template: classic
-          base: header, activity, community, repositories
-          config_timezone: Africa/Cairo
+          github_user_name: mohamednagy77
+          outputs: |
+            dist/snake.svg
 
-          # More accurate activity
-          plugin_activity: yes
-          plugin_activity_days: 365
-          plugin_activity_filter: all
-          plugin_activity_visibility: all
-
-          # Contributions calendar (closest to GitHub)
-          plugin_isocalendar: yes
-          plugin_isocalendar_duration: full-year
+      - name: Push Snake
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
