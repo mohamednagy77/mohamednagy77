@@ -19,8 +19,7 @@ jobs:
           template: classic
           base: header, activity, community, repositories
           config_timezone: Africa/Cairo
-
-          # More accurate activity
+          # More accurate activit
           plugin_activity: yes
           plugin_activity_days: 365
           plugin_activity_filter: all
